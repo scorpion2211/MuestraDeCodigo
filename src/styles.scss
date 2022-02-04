@@ -1,0 +1,187 @@
+/* You can add global styles to this file, and also import other style files */
+
+:root {
+  --negro_0: #000;
+  --negro_0t: rgba(0, 0, 0, 0.795);
+  --negro_1: #333;
+  --negro_1t: rgba(51, 51, 51, 0.795);
+  --blanco_0: #fff;
+  --blanco_1: rgb(209, 237, 253);
+  --blanco_1t: rgba(209, 237, 253, 0.555);
+  --rojo_0: rgb(255, 4, 4);
+  --azul_0: rgb(98, 166, 230);
+  --azul_1: rgb(6, 98, 184);
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  button:focus {
+    outline: none !important;
+    outline-width: none !important;
+  }
+}
+
+body {
+  color: #333;
+  line-height: 1.6;
+}
+
+.app-layout {
+  height: 100vh;
+  .inner-content {
+    padding: 24px;
+    background: rgba(255, 255, 255, 0.459);
+    height: 100%;
+    overflow-y: auto;
+  }
+}
+
+.bg-ia {
+  background: rgba(2, 0, 36, 0.678) !important;
+  background: linear-gradient(
+    315deg,
+    rgba(2, 0, 36, 0.75) 0%,
+    rgba(71, 9, 121, 0.75) 56%,
+    rgba(34, 115, 191, 0.75) 100%,
+    rgba(0, 212, 255, 0.75) 100%
+  ) !important;
+}
+
+.bg-ia-inv {
+  background: rgba(2, 0, 36, 0.678) !important;
+  background: linear-gradient(
+    155deg,
+    rgba(2, 0, 36, 0.75) 0%,
+    rgba(71, 9, 121, 0.75) 56%,
+    rgba(34, 115, 191, 0.75) 100%,
+    rgba(0, 212, 255, 0.75) 100%
+  ) !important;
+}
+
+.flex_10 {
+  width: 10% !important;
+}
+
+.flex_20 {
+  width: 20% !important;
+}
+
+.flex_25 {
+  width: 25% !important;
+}
+
+.flex_30 {
+  width: 30% !important;
+}
+
+.flex_40 {
+  width: 40% !important;
+}
+
+.flex_50 {
+  width: 50% !important;
+}
+
+.flex_60 {
+  width: 60% !important;
+}
+
+.flex_70 {
+  width: 70% !important;
+}
+
+.flex_80 {
+  width: 80% !important;
+}
+
+.flex_90 {
+  width: 90% !important;
+}
+
+.flex_100 {
+  width: 100% !important;
+}
+
+.flex_row {
+  display: flex;
+
+  flex-direction: row;
+
+  flex-wrap: nowrap;
+}
+
+.flex_row_reverse {
+  flex-direction: row-reverse !important;
+}
+
+.flex_column {
+  display: flex;
+
+  flex-direction: column;
+
+  flex-wrap: nowrap;
+}
+
+.flex_column_reverse {
+  display: flex;
+
+  flex-direction: column-reverse;
+
+  flex-wrap: nowrap;
+}
+
+.flex_start {
+  justify-content: flex-start;
+}
+
+.flex_center {
+  justify-content: center;
+}
+
+.flex_end {
+  justify-content: flex-end;
+}
+
+.flex_around {
+  justify-content: space-around;
+}
+
+.flex_between {
+  justify-content: space-between;
+}
+
+.flex_wrap {
+  flex-wrap: wrap !important;
+}
+
+.flex_start_vertical {
+  align-items: flex-start;
+
+  align-content: flex-start;
+}
+
+.flex_center_vertical {
+  align-content: center;
+
+  align-items: center;
+}
+
+.flex_between_vertical {
+  align-content: space-between;
+
+  align-items: space-between;
+}
+
+.flex_around_vertical {
+  align-content: space-around;
+
+  align-items: space-around;
+}
+
+.flex_end_vertical {
+  align-items: flex-end;
+
+  align-content: flex-end;
+}

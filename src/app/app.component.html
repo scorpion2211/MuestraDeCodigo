@@ -1,0 +1,15 @@
+<nz-layout class="app-layout">
+  <!--  <nz-spin *ngIf="showLoading" nzTip="Loading..." class="loading"> </nz-spin> -->
+  <div class="loading" *ngIf="showLoading">
+    <div class="wrapper">
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="shadow"></div>
+      <div class="shadow"></div>
+      <div class="shadow"></div>
+      <span>Loading</span>
+    </div>
+  </div>
+  <router-outlet></router-outlet>
+</nz-layout>

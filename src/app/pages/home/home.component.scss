@@ -1,0 +1,28 @@
+:host {
+  display: flex;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+nz-content {
+  padding: 24px;
+  background-image: url("/assets/img/fondo.jpg") !important;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.inner-content {
+  .catalog {
+    width: 100%;
+    height: 100%;
+    border: solid 1px #333;
+  }
+}
+
+.alert {
+  position: absolute;
+  top: 60px;
+  right: 10px;
+  width: 300px;
+}

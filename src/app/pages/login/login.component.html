@@ -1,0 +1,111 @@
+<div class="login">
+  <!--  <form [formGroup]="formLogin" class="form-login bg-ia animate__animated animate__fadeInDown" *ngIf="!registro">
+        <div class="flex_column flex_center_vertical animate__animated animate__heartBeat">
+            <img _ngcontent-baa-c87="" src="./assets/img/logo2.png" alt="logo" width="200px" />
+        </div>
+        <div>
+            <h2 class="h4">LOGIN</h2>
+            <nz-input-group nzAddOnBeforeIcon="mail">
+                <input type="text" nz-input placeholder="correo" formControlName="email" />
+            </nz-input-group>
+            <nz-input-group nzAddOnBeforeIcon="lock">
+                <input type="password" nz-input placeholder="Clave" formControlName="password" />
+            </nz-input-group>
+        </div>
+        <button nz-button nzType="primary" nzSize="large" nzShape="round" (click)="SingIn()" [disabled]="this.formLogin.invalid">
+      <i nz-icon nzType="download"></i>
+      LOGIN
+    </button>
+        <span>¿NO TIENES CUENTA?
+      <a href="favascript:::" (click)="registro = true">CREAR</a></span
+    >
+  </form> -->
+
+  <form
+    [formGroup]="formLogin"
+    class="form-login bg-ia animate__animated animate__fadeInDown"
+  >
+    <div
+      class="flex_column flex_center_vertical animate__animated animate__fadeIn"
+    >
+      <img
+        _ngcontent-baa-c87=""
+        src="./assets/img/logo2.png"
+        alt="logo"
+        width="200px"
+      />
+    </div>
+    <div>
+      <h2 class="h4 animate__animated animate__rubberBand" *ngIf="!registro">
+        LOGIN
+      </h2>
+      <h2 class="h4 animate__animated animate__rubberBand" *ngIf="registro">
+        REGISTRO
+      </h2>
+      <nz-input-group nzAddOnBeforeIcon="mail">
+        <input
+          type="text"
+          nz-input
+          placeholder="e-Mail"
+          formControlName="email"
+        />
+      </nz-input-group>
+      <nz-input-group nzAddOnBeforeIcon="lock">
+        <input
+          type="password"
+          nz-input
+          placeholder="Clave"
+          formControlName="password"
+        />
+      </nz-input-group>
+      <nz-input-group
+        nzAddOnBeforeIcon="lock"
+        *ngIf="registro"
+        class="animate__animated animate__fadeInDown"
+      >
+        <input
+          type="password"
+          nz-input
+          placeholder="Repita la Clave"
+          formControlName="password2"
+        />
+      </nz-input-group>
+      <span *ngIf="passInvalid && registro" class="passInvalid"
+        >las claves no coinciden</span
+      >
+    </div>
+    <button
+      *ngIf="!registro"
+      nz-button
+      nzType="primary"
+      nzSize="large"
+      nzShape="round"
+      (click)="SingIn()"
+      [disabled]="this.formLogin.invalid"
+    >
+      <i nz-icon nzType="download"></i>
+      <span class="animate__animated animate__flip">LOGIN</span>
+    </button>
+    <button
+      *ngIf="registro"
+      nz-button
+      nzType="primary"
+      nzSize="large"
+      nzShape="round"
+      (click)="SingUp()"
+      [disabled]="this.formLogin.invalid || passInvalid"
+    >
+      <i nz-icon nzType="download"></i
+      ><span class="animate__animated animate__flip">REGISTRO</span>
+    </button>
+
+    <span *ngIf="!registro">
+      ¿NO TIENES CUENTA?
+      <a href="favascript:::" (click)="registro = true">CREAR</a>
+    </span>
+    <span *ngIf="registro">
+      YA TENGO UNA CUENTA
+      <a href="favascript:::" (click)="registro = false">LOGIN</a>
+    </span>
+  </form>
+</div>

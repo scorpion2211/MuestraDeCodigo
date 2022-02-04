@@ -1,0 +1,153 @@
+<nz-header>
+  <div class="app-header bg-ia-inv">
+    <div class="logo-home">
+      <a routerLink="/home">
+        <img src="./assets/img/cart.png" alt="logo" routerLink="/home" />
+      </a>
+    </div>
+    <ul nz-menu nzMode="horizontal">
+      <li
+        nz-menu-item
+        nz-tooltip
+        nzTooltipTitle="Ver carrito"
+        [nzTooltipPlacement]="'bottom'"
+        (click)="showModal()"
+      >
+        <nz-badge [nzCount]="fb.getCantCart" nzShowZero>
+          <a href="javascript:::" class="flex_row flex_center_vertical">
+            <i nz-icon nzType="shopping-cart" nzTheme="outline"></i>
+          </a>
+        </nz-badge>
+      </li>
+      <li *ngIf="isLogged" nz-submenu [nzTitle]="userLogged" nzIcon="user">
+        <ul>
+          <li nz-menu-item (click)="isVisibleOrder = true">Mis Ordenes</li>
+          <li nz-menu-item (click)="logout()">Logout</li>
+        </ul>
+      </li>
+
+      <li *ngIf="!isLogged" nz-menu-item routerLink="/login">Sing In/Up</li>
+    </ul>
+  </div>
+</nz-header>
+
+<nz-modal
+  [(nzVisible)]="isVisibleCart"
+  nzTitle="Mi Carrito"
+  (nzOnCancel)="isVisibleCart = false"
+>
+  <ng-container *nzModalContent>
+    <nz-list
+      nzBordered
+      *ngIf="fb.getCart.prods.length > 0"
+      style="max-height: 500px; overflow-y: auto"
+    >
+      <nz-list-item *ngFor="let prod of fb.getCart.prods">
+        <span nz-typography
+          ><mark>{{ fb.getNameProd(prod.id_prod) }}</mark></span
+        >
+        <div class="flex_row flex_between text-center">
+          <button
+            class="mx-1"
+            nz-button
+            nzType="primary"
+            [nzSize]="'small'"
+            nzShape="circle"
+            (click)="AddCart(prod)"
+          >
+            <i nz-icon nzType="plus"></i>
+          </button>
+          <span class="mx-2" style="width: 30px"
+            ><b>{{ prod.cant }}</b></span
+          >
+          <button
+            class="mx-1"
+            nz-button
+            nzType="primary"
+            nzDanger
+            [nzSize]="'small'"
+            nzShape="circle"
+            (click)="DelCart(prod)"
+          >
+            <i nz-icon nzType="minus"></i>
+          </button>
+        </div>
+      </nz-list-item>
+    </nz-list>
+    <span *ngIf="fb.getCart.prods.length == 0" class="h3">
+      <button
+        class="mx-1"
+        nz-button
+        nzType="primary"
+        [nzSize]="'small'"
+        nzShape="circle"
+        routerLink="/home"
+        (click)="isVisibleCart = false"
+      >
+        <i nz-icon nzType="plus"></i>
+      </button>
+      agregue porductos
+    </span>
+  </ng-container>
+  <div *nzModalFooter>
+    <button nz-button nzType="default" (click)="isVisibleCart = false">
+      Volver
+    </button>
+    <button
+      nz-button
+      nzType="primary"
+      (click)="ConfirmarOrden()"
+      *ngIf="fb.getCart.prods.length > 0 && isLogged"
+    >
+      Confirmar Orden
+    </button>
+    <button *ngIf="!isLogged" nz-button nzType="primary" routerLink="/login">
+      Iniciar Sesión
+    </button>
+  </div>
+</nz-modal>
+
+<nz-modal
+  [(nzVisible)]="isVisibleOrder"
+  nzTitle="Mis Ordenes"
+  (nzOnCancel)="isVisibleOrder = false"
+>
+  <ng-container *nzModalContent>
+    <div class="inner-content" style="max-height: 500px; overflow-y: auto">
+      <div
+        class="flex_row flex_center_vertical"
+        *ngIf="fb.allOrders.length == 0"
+      >
+        <button
+          class="mx-1"
+          nz-button
+          nzType="primary"
+          [nzSize]="'small'"
+          nzShape="circle"
+          (click)="isVisibleOrder = false"
+        >
+          <i nz-icon nzType="plus"></i>
+        </button>
+        <span class="h3"> generar carrito</span>
+      </div>
+      <nz-collapse>
+        <nz-collapse-panel
+          class="animate__animated animate__bounceInLeft"
+          *ngFor="let order of fb.allOrders; let index = index"
+          [nzHeader]="'Orden N°' + (index + 1)"
+          [nzActive]="index == 0 ? true : false"
+          [nzDisabled]="false"
+        >
+          <p class="my-1" *ngFor="let prod of order.prods">
+            {{ prod.cant }} - {{ fb.getNameProd(prod.id_prod) }}
+          </p>
+        </nz-collapse-panel>
+      </nz-collapse>
+    </div>
+  </ng-container>
+  <div *nzModalFooter>
+    <button nz-button nzType="default" (click)="isVisibleOrder = false">
+      Volver
+    </button>
+  </div>
+</nz-modal>
